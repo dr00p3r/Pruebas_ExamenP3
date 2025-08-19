@@ -1,4 +1,4 @@
-const { calcWeightedGrade, percentile } = require("./grades");
+const { calcWeightedGrade, percentile } = require('./grades');
 
 test('La nota ponderada de 80 con peso de 0.4 y 90 con peso de 0.6 debe dar 86.00', () => {
     expect(calcWeightedGrade([{score:80,weight:0.4},{score:90,weight:0.6}])).toBe(86.00);
