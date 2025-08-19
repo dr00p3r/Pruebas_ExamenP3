@@ -14,8 +14,8 @@ test('En la lista [1,2,3,4] el percentil 50 debe dar 2.00', ()=>{
     expect(percentile(50, [1,2,3,4])).toBe(2.00);
 });
 
-test('Probar que calcWeightedGrade lanza TypeError cuando items no es un arreglo', ()=>{
-    expect(calcWeightedGrade(12)).toThrow(TypeError('items debe ser un arreglo'));
+test('Probar que calcWeightedGrade lanza TypeError cuando items no es un arreglo', () => {
+    expect(() => calcWeightedGrade(12)).toThrow(TypeError('items debe ser un arreglo'));
 });
 
 test('Probar que calcWeightedGrade lanza RangeError cuando los pesos suman mas de 1', ()=>{
