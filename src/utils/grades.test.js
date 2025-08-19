@@ -20,4 +20,4 @@ test('Probar que calcWeightedGrade lanza TypeError cuando items no es un arreglo
 
 test('Probar que calcWeightedGrade lanza RangeError cuando los pesos suman mas de 1', ()=>{
     expect(() => calcWeightedGrade([{score:80,weight:0.4},{score:90,weight:0.7}])).toThrow(RangeError('La suma de los pesos debe ser 1 ±0.001'));
-})
+});
