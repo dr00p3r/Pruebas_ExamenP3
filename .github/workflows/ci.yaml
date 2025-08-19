@@ -1,0 +1,38 @@
+name: CI/CD Workflow
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+      
+      - name: Configurar Node.jobs
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Instalar dependencias
+        run: npm i
+      
+      - name: Lint del código
+        run: npm run lint
+      
+      - name: Ejecutar pruebas
+        run: npm test
+      
+      - name: Comprobar cobertura con jest >85% de lineas y ramas
+        run: |
+          jest --coverage --coverageThreshold='{"global":{"branches":85,"lines":85}}'
+
+      - name: Bloquear PR si CI o auditoría falla
+        if: failure()
+        run: |
+          echo "Bloqueando PR debido a fallos en CI o auditoría"
+          exit 1
