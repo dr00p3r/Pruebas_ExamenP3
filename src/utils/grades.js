@@ -38,6 +38,7 @@ function percentile(p, values) {
             throw new TypeError('Los valores para calcular el percentil deben ser numeros');
         }
     }
+    
     const sorted = [...values].sort((a, b) => a - b);
     const N = sorted.length;
     if (p === 0) return Number(sorted[0].toFixed(2));
